@@ -8,4 +8,3 @@
 * Ubuntu 16.04
 * Ubuntu 18.04
 * LinuxMint 19.1
-* CentOS 7
