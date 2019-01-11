@@ -60,7 +60,7 @@ installCUDASDKdeb() {
     sudo dpkg -i "$(basename "$CUDA_REPO_URL")"
     sudo apt-key adv --fetch-keys "$CUDA_REPO_KEY"
     sudo apt-get -y update
-    sudo apt-get -y install cuda
+    sudo apt-get -y install cuda --allow-unauthenticated
 
     sudo env LC_ALL=C.UTF-8 add-apt-repository -y ppa:graphics-drivers/ppa
     sudo apt-get -y update
