@@ -49,6 +49,9 @@ installLibs() {
     esac
 }
 
+#installBlackMagic() {
+#}
+
 installCUDASDKdeb() {
     UBUNTU_VERSION="$1"
     local CUDA_REPO_URL="https://developer.download.nvidia.com/compute/cuda/repos/ubuntu${UBUNTU_VERSION}/x86_64/cuda-repo-ubuntu1804_${CUDA_VERSION}_amd64.deb"
@@ -62,9 +65,6 @@ installCUDASDKdeb() {
     sudo apt-get -y update
     sudo apt-get -y upgrade
 }
-
-#installBlackMagic() {
-#}
 
 installCUDASDK() {
     echo "Installing CUDA and the latest driver repositories from repositories"
