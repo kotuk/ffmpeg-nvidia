@@ -16,6 +16,7 @@ OPUS_VERSION="1.2.1"
 CUDA_VERSION="10.0.130-1"
 CUDA_REPO_KEY="http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub"
 CUDA_DIR="/usr/local/cuda"
+BLACKMAGIC_DIR="/usr/src/Blackmagic-SDK/Linux"
 WORK_DIR="$HOME/ffmpeg-build-static-sources"
 DEST_DIR="$HOME/ffmpeg-build-static-binaries"
 
@@ -61,6 +62,9 @@ installCUDASDKdeb() {
     sudo apt-get -y update
     sudo apt-get -y upgrade
 }
+
+#installBlackMagic() {
+#}
 
 installCUDASDK() {
     echo "Installing CUDA and the latest driver repositories from repositories"
@@ -212,9 +216,10 @@ compileFfmpeg(){
       --pkg-config-flags="--static" \
       --prefix="$DEST_DIR" \
       --bindir="$DEST_DIR/bin" \
-      --extra-cflags="-I $DEST_DIR/include -I $CUDA_DIR/include/" \
-      --extra-ldflags="-L $DEST_DIR/lib -L $CUDA_DIR/lib64/" \
+      --extra-cflags="-I $DEST_DIR/include -I $CUDA_DIR/include/ -I $BLACKMAGIC_DIR/include/" \
+      --extra-ldflags="-L $DEST_DIR/lib -L $CUDA_DIR/lib64/ -L $BLACKMAGIC_DIRinclude/" \
       --extra-libs="-lpthread" \
+      --enable-decklink \
       --enable-cuda-sdk \
       --enable-cuvid \
       --enable-libnpp \
@@ -239,6 +244,7 @@ compileFfmpeg(){
 }
 
 installLibs
+# TODO: installBlackMagic
 installCUDASDK
 installNvidiaSDK
 
@@ -251,8 +257,6 @@ compileLibVpx
 compileLibfdkaac
 compileLibMP3Lame
 compileLibOpus
-# TODO: libogg
-# TODO: libvorbis
 compileFfmpeg
 
 echo "Complete!"
