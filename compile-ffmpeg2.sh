@@ -5,7 +5,7 @@
 
 # Based on:  https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu
 # Based on:  https://gist.github.com/Brainiarc7/3f7695ac2a0905b05c5b
-# Rewritten here: https://github.com/ilyaevseev/ffmpeg-build-static/
+# Based on:  https://github.com/ilyaevseev/ffmpeg-build-static/
 
 
 # Globals
@@ -39,17 +39,12 @@ installAptLibs() {
       libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev libxcb-xfixes0-dev zlib1g-dev
 }
 
-installYumLibs() {
-    sudo yum -y install $PKGS freetype-devel gcc gcc-c++ pkgconfig zlib-devel \
-      libass-devel tibtheora-devel libvorbis-devel libva-devel
-}
-
 installLibs() {
     echo "Installing prerequisites"
     . /etc/os-release
     case "$ID" in
         ubuntu | linuxmint ) installAptLibs ;;
-        * )                  installYumLibs ;;
+        * ) echo "ERROR: only Ubuntu 16.04 or 18.04 are supported now."; exit 1;;
     esac
 }
 
@@ -67,12 +62,6 @@ installCUDASDKdeb() {
     sudo apt-get -y upgrade
 }
 
-installCUDASDKyum() {
-    rpm -q cuda-repo-rhel7 2>/dev/null ||
-       yum install -y "https://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/cuda-repo-rhel7-${CUDA_VERSION}.x86_64.rpm"
-    yum install -y cuda
-}
-
 installCUDASDK() {
     echo "Installing CUDA and the latest driver repositories from repositories"
     cd "$WORK_DIR/"
@@ -82,8 +71,7 @@ installCUDASDK() {
         ubuntu-16.04 ) installCUDASDKdeb 1604 ;;
         ubuntu-18.04 ) installCUDASDKdeb 1804 ;;
         linuxmint-19.1)installCUDASDKdeb 1804 ;;
-        centos-7     ) installCUDASDKyum ;;
-        * ) echo "ERROR: only CentOS 7, Ubuntu 16.04 or 18.04 are supported now."; exit 1;;
+        * ) echo "ERROR: only Ubuntu 16.04 or 18.04 are supported now."; exit 1;;
     esac
 }
 
@@ -162,8 +150,8 @@ compileLibAom() {
     make install
 }
 
-compileLibfdkcc() {
-    echo "Compiling libfdk-cc"
+compileLibfdkaac() {
+    echo "Compiling libfdk-aac"
     cd "$WORK_DIR/"
     Wget -O fdk-aac.zip https://github.com/mstorsjo/fdk-aac/zipball/master
     unzip -o fdk-aac.zip
@@ -243,8 +231,8 @@ compileFfmpeg(){
       --enable-libx264 \
       --enable-libx265 \
       --enable-nonfree \
+      --enable-libaom \
       --enable-nvenc
-#     --enable-libaom \
     make -j$(nproc)
     make install distclean
     hash -r
@@ -258,9 +246,9 @@ compileNasm
 compileYasm
 compileLibX264
 compileLibX265
-# TODO: compileLibAom -- requires cmake-3.5 while centos7 provides cmake-2.8 only
+compileLibAom
 compileLibVpx
-compileLibfdkcc
+compileLibfdkaac
 compileLibMP3Lame
 compileLibOpus
 # TODO: libogg
