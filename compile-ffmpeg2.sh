@@ -50,7 +50,7 @@ installLibs() {
 
 installCUDASDKdeb() {
     UBUNTU_VERSION="$1"
-    local CUDA_REPO_URL="https://developer.download.nvidia.com/compute/cuda/repos/ubuntu${UBUNTU_VERSION}/x86_64/cuda-repo-ubuntu1804_${CUDA_VERSION}_amd64.deb"
+    local CUDA_REPO_URL="https://developer.download.nvidia.com/compute/cuda/repos/ubuntu${UBUNTU_VERSION}/x86_64/cuda-repo-ubuntu${UBUNTU_VERSION}_${CUDA_VERSION}_amd64.deb"
     Wget "$CUDA_REPO_URL"
     sudo dpkg -i "$(basename "$CUDA_REPO_URL")"
     sudo apt-key adv --fetch-keys "$CUDA_REPO_KEY"
