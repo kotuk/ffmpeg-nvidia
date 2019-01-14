@@ -215,6 +215,7 @@ compileFfmpeg(){
       --extra-cflags="-I $DEST_DIR/include -I $CUDA_DIR/include/" \
       --extra-ldflags="-L $DEST_DIR/lib -L $CUDA_DIR/lib64/" \
       --extra-libs="-lpthread" \
+      --enable-openssl \
       --enable-cuda-sdk \
       --enable-cuvid \
       --enable-libnpp \
@@ -223,13 +224,13 @@ compileFfmpeg(){
       --enable-libfdk-aac \
       --enable-vaapi \
       --enable-libfreetype \
-      --enable-libmp3lame \
-      --enable-libopus \
       --enable-libtheora \
       --enable-libvorbis \
       --enable-libvpx \
       --enable-libx264 \
       --enable-libx265 \
+      --enable-libmp3lame \
+      --enable-libopus \
       --enable-nonfree \
       --enable-libaom \
       --enable-nvenc
