@@ -229,8 +229,6 @@ compileFfmpeg(){
       --enable-libfdk-aac \
       --enable-vaapi \
       --enable-libfreetype \
-      --enable-libmp3lame \
-      --enable-libopus \
       --enable-libtheora \
       --enable-libvorbis \
       --enable-libvpx \
@@ -238,6 +236,8 @@ compileFfmpeg(){
       --enable-libx265 \
       --enable-nonfree \
       --enable-libaom \
+      --enable-libmp3lame \
+      --enable-libopus \
       --enable-nvenc
     make -j$(nproc)
     make install distclean
