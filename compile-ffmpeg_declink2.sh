@@ -219,6 +219,7 @@ compileFfmpeg(){
       --extra-cflags="-I $DEST_DIR/include -I $CUDA_DIR/include/ -I $BLACKMAGIC_DIR/include/" \
       --extra-ldflags="-L $DEST_DIR/lib -L $CUDA_DIR/lib64/ -L $BLACKMAGIC_DIRinclude/" \
       --extra-libs="-lpthread" \
+      --enable-openssl \
       --enable-decklink \
       --enable-cuda-sdk \
       --enable-cuvid \
