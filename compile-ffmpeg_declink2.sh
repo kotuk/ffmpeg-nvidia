@@ -234,10 +234,10 @@ compileFfmpeg(){
       --enable-libvpx \
       --enable-libx264 \
       --enable-libx265 \
-      --enable-nonfree \
-      --enable-libaom \
       --enable-libmp3lame \
       --enable-libopus \
+      --enable-nonfree \
+      --enable-libaom \
       --enable-nvenc
     make -j$(nproc)
     make install distclean
