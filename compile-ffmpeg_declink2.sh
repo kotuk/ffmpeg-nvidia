@@ -14,14 +14,13 @@ YASM_VERSION="1.3.0"
 LAME_VERSION="3.100"
 OPUS_VERSION="1.2.1"
 CUDA_VERSION="10.0.130-1"
-#DECKLINK_DRV_VERSION="10.11.4"
-#DECKLINK_SDK_VERSION="10.11.4"
-#DECKLINK_SDK_LINK=""
+DECKLINK_DRV_VERSION="10.11.4"
+DECKLINK_SDK_VERSION="10.11.4"
 CUDA_REPO_KEY="http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub"
 CUDA_DIR="/usr/local/cuda"
-BLACKMAGIC_DIR="/usr/src/Blackmagic-SDK/Linux"
 WORK_DIR="$HOME/ffmpeg-build-static-sources"
 DEST_DIR="$HOME/ffmpeg-build-static-binaries"
+BLACKMAGIC_DIR="$WORK_DIR/Blackmagic-SDK/Linux"
 
 mkdir -p "$WORK_DIR" "$DEST_DIR" "$DEST_DIR/bin"
 
@@ -52,12 +51,25 @@ installLibs() {
     esac
 }
 
-#installBlackMagic() {
-#     echo "Installing BlackMagic/DeckLink Drivers and SDK"
+#installBlackMagicDriver() {
+#     echo "Installing BlackMagic/DeckLink Drivers"
 #     cd "$WORK_DIR/"
-#     local DECKLINK_DRV_LINK="http://aaa.bbb.ccc/Blackmagic_Desktop_Video_Linux_${DECKLINK_DRV_VERSION}.tar.gz"
+#     local DECKLINK_DRV_LINK="http://aaa.bbb.ccc/Blackmagic_Desktop_Video_Linux_$DECKLINK_DRV_VERSION.tar.gz"
 #     Wget "$DECKLINK_DRV_LINK"
+#     tar xzvf "Blackmagic_Desktop_Video_Linux_$DECKLINK_DRV_VERSION.tar.gz"
+#     cd Blackmagic_Desktop_Video_Linux_$DECKLINK_DRV_VERSION/deb/x86_64
+#     sudo dpkg -i desktopvideo_$DECKLINK_DRV_VERSION*.deb
 #}
+
+#installBlackMagicSDK() {
+#     echo "Installing BlackMagic/DeckLink SDK"
+#     cd "$WORK_DIR/"
+#     local DECKLINK_SDK_LINK="http://aaa.bbb.ccc/Blackmagic_DeckLink_SDK_$DECKLINK_SDK_VERSION.zip"
+#     Wget "$DECKLINK_SDK_LINK"
+#     unzip -o Blackmagic_DeckLink_SDK_$DECKLINK_SDK_VERSION.zip
+#     mv Blackmagic\ DeckLink\ SDK\ $DECKLINK_DRV_VERSION Blackmagic-SDK
+#}
+
 
 installCUDASDKdeb() {
     UBUNTU_VERSION="$1"
@@ -252,7 +264,8 @@ compileFfmpeg(){
 }
 
 installLibs
-# TODO: installBlackMagic
+# TODO: installBlackMagicDriver
+# TODO: installBlackMagicSDK
 installCUDASDK
 installNvidiaSDK
 
