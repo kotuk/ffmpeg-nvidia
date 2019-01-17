@@ -52,7 +52,7 @@ installLibs() {
 }
 
 #installBlackMagicDriver() {
-#     echo "Installing BlackMagic/DeckLink Drivers"
+#     echo "Installing BlackMagic DeckLink Drivers"
 #     cd "$WORK_DIR/"
 #     local DECKLINK_DRV_LINK="http://aaa.bbb.ccc/Blackmagic_Desktop_Video_Linux_$DECKLINK_DRV_VERSION.tar.gz"
 #     Wget "$DECKLINK_DRV_LINK"
@@ -62,12 +62,12 @@ installLibs() {
 #}
 
 #installBlackMagicSDK() {
-#     echo "Installing BlackMagic/DeckLink SDK"
+#     echo "Installing BlackMagic DeckLink SDK"
 #     cd "$WORK_DIR/"
 #     local DECKLINK_SDK_LINK="http://aaa.bbb.ccc/Blackmagic_DeckLink_SDK_$DECKLINK_SDK_VERSION.zip"
 #     Wget "$DECKLINK_SDK_LINK"
 #     unzip -o Blackmagic_DeckLink_SDK_$DECKLINK_SDK_VERSION.zip
-#     mv Blackmagic\ DeckLink\ SDK\ $DECKLINK_DRV_VERSION Blackmagic-SDK
+#     mv Blackmagic\ DeckLink\ SDK\ $DECKLINK_SDK_VERSION Blackmagic-SDK
 #}
 
 
