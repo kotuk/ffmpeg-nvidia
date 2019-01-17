@@ -14,6 +14,9 @@ YASM_VERSION="1.3.0"
 LAME_VERSION="3.100"
 OPUS_VERSION="1.2.1"
 CUDA_VERSION="10.0.130-1"
+#DECKLINK_DRV_VERSION="10.11.4"
+#DECKLINK_SDK_VERSION="10.11.4"
+#DECKLINK_SDK_LINK=""
 CUDA_REPO_KEY="http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub"
 CUDA_DIR="/usr/local/cuda"
 BLACKMAGIC_DIR="/usr/src/Blackmagic-SDK/Linux"
@@ -50,6 +53,10 @@ installLibs() {
 }
 
 #installBlackMagic() {
+#     echo "Installing BlackMagic/DeckLink Drivers and SDK"
+#     cd "$WORK_DIR/"
+#     local DECKLINK_DRV_LINK="http://aaa.bbb.ccc/Blackmagic_Desktop_Video_Linux_${DECKLINK_DRV_VERSION}.tar.gz"
+#     Wget "$DECKLINK_DRV_LINK"
 #}
 
 installCUDASDKdeb() {
