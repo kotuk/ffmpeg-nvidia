@@ -37,7 +37,7 @@ PKGS="autoconf automake libtool patch make cmake bzip2 unzip wget git mercurial"
 installAptLibs() {
     sudo apt-get update
     sudo apt-get -y --force-yes install $PKGS \
-      build-essential pkg-config texi2html software-properties-common \
+      build-essential pkg-config texi2html software-properties-common libssl-dev \
       libass-dev libfreetype6-dev libgpac-dev libsdl1.2-dev libtheora-dev libva-dev \
       libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev libxcb-xfixes0-dev zlib1g-dev
 }
