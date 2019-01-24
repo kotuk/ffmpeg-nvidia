@@ -68,6 +68,7 @@ installCUDASDK() {
 
     . /etc/os-release
     case "$ID-$VERSION_ID" in
+        ubuntu-14.04 ) installCUDASDKdeb 1404 ;;
         ubuntu-16.04 ) installCUDASDKdeb 1604 ;;
         ubuntu-18.04 ) installCUDASDKdeb 1804 ;;
         linuxmint-19.1)installCUDASDKdeb 1804 ;;
