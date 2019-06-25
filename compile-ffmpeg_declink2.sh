@@ -240,7 +240,7 @@ compileFfmpeg(){
       --extra-libs="-lpthread" \
       --enable-openssl \
       --enable-decklink \
-      --enable-cuda-sdk \
+      --enable-cuda-nvcc \
       --enable-cuvid \
       --enable-libnpp \
       --enable-gpl \
