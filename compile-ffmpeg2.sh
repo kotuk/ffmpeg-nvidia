@@ -9,7 +9,7 @@
 
 
 # Globals
-NASM_VERSION="2.14rc16"
+NASM_VERSION="2.15.05"
 YASM_VERSION="1.3.0"
 LAME_VERSION="3.100"
 OPUS_VERSION="1.2.1"
@@ -44,7 +44,7 @@ installLibs() {
     . /etc/os-release
     case "$ID" in
         ubuntu | linuxmint ) installAptLibs ;;
-        * ) echo "ERROR: only Ubuntu 16.04 or 18.04 are supported now."; exit 1;;
+        * ) echo "ERROR: only Ubuntu are supported now."; exit 1;;
     esac
 }
 
@@ -71,8 +71,10 @@ installCUDASDK() {
         ubuntu-14.04 ) installCUDASDKdeb 1404 ;;
         ubuntu-16.04 ) installCUDASDKdeb 1604 ;;
         ubuntu-18.04 ) installCUDASDKdeb 1804 ;;
+        ubuntu-20.04 ) installCUDASDKdeb 2004 ;;
+        ubuntu-22.04 ) installCUDASDKdeb 2204 ;;
         linuxmint-19.1)installCUDASDKdeb 1804 ;;
-        * ) echo "ERROR: only Ubuntu 16.04 or 18.04 are supported now."; exit 1;;
+        * ) echo "ERROR: only Ubuntu are supported now."; exit 1;;
     esac
 }
 
