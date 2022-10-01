@@ -37,7 +37,7 @@ installAptLibs() {
       build-essential pkg-config texi2html software-properties-common libssl-dev \
       libass-dev libfreetype6-dev libgpac-dev libsdl1.2-dev libtheora-dev libva-dev \
       libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev libxcb-xfixes0-dev zlib1g-dev \
-      liblilv-0-0 liblilv-dev lilv-utils libdrm-dev
+      liblilv-0-0 liblilv-dev lilv-utils libdrm-dev libxml2-dev
 }
 
 installLibs() {
