@@ -124,15 +124,14 @@ compileLibX264() {
 }
 
 compileLibX265() {
-    if cd "$WORK_DIR/x265/"; then
-        hg pull
-        hg update
+    if cd "$WORK_DIR/x265_git/"; then
+        git pull
     else
         cd "$WORK_DIR/"
-        hg clone https://bitbucket.org/multicoreware/x265
+        git clone https://bitbucket.org/multicoreware/x265_git.git
     fi
 
-    cd "$WORK_DIR/x265/build/linux/"
+    cd "$WORK_DIR/x265_git/build/linux/"
     cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX="$DEST_DIR" -DENABLE_SHARED:bool=off ../../source
     make -j$(nproc)
     make install
